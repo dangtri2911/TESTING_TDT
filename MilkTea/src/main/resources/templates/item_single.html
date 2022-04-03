@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:sec="http://www.thymeleaf.org/extras/spring-security" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Trà Sữa</title>
+    <link rel="shortcut icon" type="image/png" href="images/logo.jpg">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <base href="/">
+    <link href="https://fonts.googleapis.com/css?family=Rubik:400,700" rel="stylesheet">
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.13.0/css/all.css">
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"></script>
+
+    <link rel="stylesheet" href="fonts/icomoon/style.css">
+
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/magnific-popup.css">
+    <link rel="stylesheet" href="css/jquery-ui.css">
+    <link rel="stylesheet" href="css/owl.carousel.min.css">
+    <link rel="stylesheet" href="css/owl.theme.default.min.css">
+
+    <link rel="stylesheet" href="css/bootstrap-datepicker.css">
+
+    <link rel="stylesheet" href="fonts/flaticon/font/flaticon.css">
+
+    <link rel="stylesheet" href="css/aos.css">
+    <link rel="stylesheet" href="css/rangeslider.css">
+
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/slider.css">
+</head>
+
+<body>
+
+<div class="site-wrap">
+
+    <div class="site-mobile-menu">
+        <div class="site-mobile-menu-header">
+            <div class="site-mobile-menu-close mt-3">
+                <span class="icon-close2 js-menu-toggle"></span>
+            </div>
+        </div>
+        <div class="site-mobile-menu-body"></div>
+    </div>
+
+    <header class="site-navbar" role="banner">
+
+        <div class="container">
+            <div class="row align-items-center">
+
+                <div class="col-11 col-xl-2">
+                    <h1 class="mb-0 site-logo">
+                        <!-- LOGO HERE BABEEE-->
+                    </h1>
+                </div>
+                <div class="col-12 col-md-10 d-none d-xl-block">
+                    <nav class="site-navigation position-relative text-right" role="navigation">
+
+                        <ul class="site-menu js-clone-nav mr-auto d-none d-lg-block">
+                            <li><a href="/"><span>Trang chủ</span></a></li>
+                            <li class="active"><span>Sản phẩm</span></li>
+                            <li class="has-children" sec:authorize="isAuthenticated() and hasAnyAuthority('ADMIN','MANAGER','NHANVIEN')">
+                                <a href="/" ><span>Quản lý</span></a>
+                                <ul class="dropdown arrow-top">
+                                    <li sec:authorize="hasAnyAuthority('ADMIN')"><a href="/admin/manage/accounts">Tài khoản</a></li>
+                                    <li sec:authorize="hasAnyAuthority('ADMIN','NHANVIENBANHANG')"><a href="#">Đơn hàng</a></li>
+                                    <li sec:authorize="hasAnyAuthority('ADMIN','THUKHO')"><a href="#">NVL</a></li>
+                                    <li class="has-children" sec:authorize="hasAnyAuthority('ADMIN')">
+                                        <a href="/admin/manage/product">Sản phẩm</a>
+                                        <ul class="dropdown">
+                                            <li><a href="/admin/add-entity/add-product">Thêm sản phẩm</a></li>
+                                            <li><a href="/admin/manage/product">Chỉnh sửa sản phẩm</a></li>
+                                            <li><a href="/admin/manage/product">Xóa sản phẩm</a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>
+
+                            <li><a href="/Menu"><span>Menu</span></a></li>
+                            <li><a href="/user"><span>Đặt đơn</span></a></li>
+                            <li><a href="/"  sec:authorize="isAuthenticated()"><span>Đơn hàng của bạn</span></a></li>
+                            <li><a href="/" sec:authorize="isAuthenticated()"><span>Tài khoản</span></a></li>
+                            <li class="login_btn">
+                                <a sec:authorize="isAnonymous()" href="/login">
+                                    <span>Login</span>
+                                </a>
+                            </li>
+                            <li class="login_btn">
+                                <a href="#">
+                                        <span  sec:authorize="isAuthenticated()">
+                                            <div sec:authentication="name"></div>
+                                        </span>
+                                </a>
+                            </li>
+                            <li class="login_btn">
+                                <a href="/logout">
+                                        <span  sec:authorize="isAuthenticated()">
+                                            Log out
+                                        </span>
+                                </a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+
+
+                <div class="d-inline-block d-xl-none ml-md-0 mr-auto py-3" style="position: relative; top: 3px;"><a href="#" class="site-menu-toggle js-menu-toggle text-white"><span class="icon-menu h3"></span></a></div>
+
+            </div>
+
+        </div>
+
+    </header>
+</div>
+
+
+    <div class="site-blocks-cover overlay site_blocks_cover_single" style="background-image: url('images/bg_4.jpg');opacity:1;" data-aos="fade" data-stellar-background-ratio="0.5">
+        <div class="container">
+            <div class="row align-items-center justify-content-center text-center">
+
+                <div class="col-md-10">
+
+                    <!--
+                    <div class="row justify-content-center mb-4">
+                        <div class="col-md-10 text-center">
+                            <h1 data-aos="fade-up">You want to <span class="typed-words"></span></h1>
+                            <p data-aos="fade-up" class=" w-75 mx-auto">Here we have every thing that you want
+                                <p>
+                        </div>
+                    </div>  
+                  -->
+
+                    <!--
+                    Search Bả
+                  <div class="form-search-wrap p-2" data-aos="fade-up" data-aos-delay="200">
+                      <form method="post">
+                          <div class="row align-items-center">
+                              <div class="col-lg-12 col-xl-4 no-sm-border border-right">
+                                  <input type="text" class="form-control" placeholder="What are you looking for?">
+                              </div>
+                              <div class="col-lg-12 col-xl-3 no-sm-border border-right">
+                                  <div class="wrap-icon">
+                                      <span class="icon icon-room"></span>
+                                      <input type="text" class="form-control" placeholder="Location">
+                                  </div>
+
+                              </div>
+                              <div class="col-lg-12 col-xl-3">
+                                  <div class="select-wrap">
+                                      <span class="icon"><span class="icon-keyboard_arrow_down"></span></span>
+                                      <select class="form-control" name="" id="">
+                      <option value="">All Categories</option>
+                      <option value="">Hotels</option>
+                      <option value="">Restaurant</option>
+                      <option value="">Eat &amp; Drink</option>
+                      <option value="">Events</option>
+                      <option value="">Fitness</option>
+                      <option value="">Others</option>
+                    </select>
+                                  </div>
+                              </div>
+                              <div class="col-lg-12 col-xl-2 ml-auto text-right">
+                                  <input type="submit" class="btn text-white btn-primary" value="Search">
+                              </div>
+
+                          </div>
+                      </form>
+                  </div>
+                  -->
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="site-section">
+        <div class="container">
+            <div class="row ">
+                <div class="col-md-8 ">
+                    <div class="row item_contain">
+                        <img th:src="${product.getLinkIMG()}" alt="Image" class="img-fluid rounded single_item mb-4 col-md-6 col-12">
+                        <div style="border-left: 1px solid hsl(0, 0%, 70%);" class="col-md-6 col-12">
+                            <table style="width:100%;" class="order_table">
+                                <tr>
+                                    <th colspan="2"> Tên Sản Phẩm:<span th:text="${product.getTenSanPham()}"></span></th>
+                                </tr>
+                                <tr>
+                                    <td>Giá: <span th:text="${product.getGia()}"></span> đ</td>
+                                    <td style="text-decoration:line-through"></td>
+                                </tr>
+                                <!--
+                                <tr>
+                                    <td>
+                                        <div class="dropdown show">
+                                            <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          Nguyên vật liệu:
+                                        </a>
+
+                                            <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+                                                <a class="dropdown-item" href="#">Trà </a>
+                                                <a class="dropdown-item" href="#">Đào</a>
+                                                <a class="dropdown-item" href="#">Something else here</a>
+                                            </div>
+                                        </div>
+                                    </td>
+                                    <td></td>
+                                </tr>
+                                -->
+                                <tr>
+                                    <td>
+                                        Mã sản phẩm: <span th:text="${product.getID()}"></span>
+                                    </td>
+                                    <td>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <div class="btn_num">-</div>
+                                        <div class="ip_num_contain"><input type="number" placeholder="1" class="input_num"></div>
+                                        <div class="btn_num"> + </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2">
+                                        <label>Voucher:</label>
+                                        <div class="voucher_tag">
+                                            <div> 30%</div>
+                                            <div> 40%</div>
+                                            <div> 50%</div>
+                                        </div>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td colspan="2" class="btn_tgvh">
+                                        Tiến hành đặt hàng
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <p><b>Description about the item:</b>
+                        <span th:text="${product.getMota()}"></span>
+                    </p>
+                    <!--
+        <h3>Even the all-powerful</h3>
+                    <p>Even the all-powerful Pointing has no control about the blind texts it is an almost unorthographic life One day however a small line of blind text by the name of Lorem Ipsum decided to leave for the far World of Grammar.</p>
+
+                    <p>The Big Oxmox advised her not to do so, because there were thousands of bad Commas, wild Question Marks and devious Semikoli, but the Little Blind Text didn’t listen. She packed her seven versalia, put her initial into the belt and
+                        made herself on the way.</p>
+
+                    <p>When she reached the first hills of the Italic Mountains, she had a last view back on the skyline of her hometown Bookmarksgrove, the headline of Alphabet Village and the subline of her own road, the Line Lane. Pityful a rethoric question
+                        ran over her cheek, then she continued her way.</p>
+
+                    -->
+
+                    <div class="pt-5">
+                        <p>Categories: <a href="#">Tea</a>, <a href="#">Peach</a> Tags: <a href="#">#Phuc Long</a>, <a href="#">#Viet Nam</a></p>
+                    </div>
+
+                </div>
+
+                <div class="col-md-3 ml-auto">
+                    <div class="mb-5">
+                        <h3 class="h5 text-black mb-3">Search</h3>
+                        <form action="#" method="post">
+                            <div class="form-group d-flex">
+                                <input type="text" class="form-control" placeholder="Nhập để tìm kiếm">
+                            </div>
+                        </form>
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        <div class="row">
+            <div class="MultiCarousel" data-items="1,3,5,6" data-slide="1" id="MultiCarousel"  data-interval="1000">
+                <div class="MultiCarousel-inner">
+                    <div th:each="product: ${products}" class="item">
+                        <div class="pad15">
+                            <img th:src="${product.getLinkIMG()}">
+                            <a th:href="@{/product/{id}(id=${product.getID()})}" th:text="${product.getTenSanPham()}">Trà sữa bumba</a>
+                        </div>
+                    </div>
+
+                </div>
+                <button class="btn btn-primary leftLst"><</button>
+                <button class="btn btn-primary rightLst">></button>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="py-5 bg-primary">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-7 mr-auto mb-4 mb-lg-0">
+                    <h2 class="mb-3 mt-0 text-white">Đăng ký tài khoản để nhận thêm nhiều khuyến mãi hấp dẫn</h2>
+                    <p class="mb-0 text-white"></p>
+                </div>
+                <div class="col-lg-4">
+                    <p class="mb-0"><a href="/signup" class="btn btn-outline-white text-white btn-md px-5 font-weight-bold btn-md-block">Đăng ký</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+    <section class="site-footer">
+        <div class="container">
+            <div class="row mb-30">
+                <div class="col-md-6">
+                    <div class="footer-card footer-card-l">
+                        <div class="footer-logo">
+                            <img src="https://trasuabumba.com/public/images/logo-footer.png" class="img-responsive" alt="Logo footer">
+                        </div>
+                        <div class="site-card mb-30">
+                            <p>Với châm ngôn tuyệt đối không sử dụng nguyên liệu không rõ nguồn gốc, xuất xứ, trà sữa Bumba tự hào mang lại cho khách hàng những sản phẩm, chất lượng tốt nhất</p>
+                        </div>
+                        <div class="footer-social">
+                            <a href="" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                            <a href="" target="_blank"><i class="fab fa-instagram"></i></a>
+                            <a href="" target="_blank"><i class="fab fa-youtube"></i></a>
+                        </div>
+
+                    </div>
+                </div><!-- /.col 3-->
+                <div class="col-md-6 col-sm-6 ">
+                    <div class="site-card footer-card footer-card-r">
+                        <h3>Liên hệ</h3>
+                        <p class="fw-600">Công ty CP-TM-DV Chào Ngày Mới</p>
+                        <p>Tầng 3 - Tòa nhà Green Bee - 684/28A Trần Hưng Đạo, Phường 2, Quận 5, TP. Hồ Chí Minh</p>
+
+                        <p>Email: bumba.om@trasuabumba.com</p>
+                        <p>Hotline: 0975 277 017</p>
+                    </div>
+                </div><!-- /.col-3-->
+
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="site-card footer-card text-center">
+                        <p>Copyright © 2020 Bumba.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    </div>
+
+
+    <script src="js/slider.js"></script>
+</body>
+
+</html>
